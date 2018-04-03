@@ -10,7 +10,7 @@ module.exports = {
     devtool: "inline-source-map",
     entry: {
         app: path.join(__dirname, '/src/index.js'),
-        vendors: ['react', 'react-dom']
+        vendor: ['react', 'react-dom']
     },
     output: {
 		path: path.resolve(__dirname, 'dist'),
