@@ -2,17 +2,20 @@ const webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
     CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
+    //mode: "production",
+    devtool: "inline-source-map",
     entry: {
         app: path.join(__dirname, '/src/index.js'),
         vendors: ['react', 'react-dom']
     },
     output: {
-        path: path.join(__dirname, "dist"),
-        filename: "[name].js",
-        chunkFilename: "[name].chunk.js"
+		path: path.resolve(__dirname, 'dist'),
+        filename: "assets/js/[name].js",
+        chunkFilename: "assets/js/[name].chunk.js"
     },
     optimization: {
         runtimeChunk: {
@@ -65,11 +68,18 @@ module.exports = {
                 loader: "babel"
             }, {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: "file-loader",
+                exclude: /node_modules/,
+                use: [{
+                        loader: "file",
                         options: {}
                     }
+                ]
+            }, {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    { loader: 'style' },
+                    { loader: 'css' }
                 ]
             }
         ]
@@ -77,14 +87,22 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new CopyWebpackPlugin([{
-            from: 'src/assets'
+            from: 'src/assets',
+            to:'assets'
         }]),
+        new ExtractTextPlugin("assets/css/site.min.css"),
         new HtmlWebpackPlugin({
             title: 'React Demo',
             filename: 'index.html',
             //chunks: ['app'],
             template: path.resolve(__dirname, 'src/index.html'),
             hash: true
-        })
-    ]
+        }),
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: './dist',
+        open:true,
+		hot: true
+	}
 }
