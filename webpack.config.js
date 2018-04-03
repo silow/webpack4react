@@ -6,7 +6,7 @@ const webpack = require('webpack'),
     CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    //mode: "production",
+    mode: "development",
     devtool: "inline-source-map",
     entry: {
         app: path.join(__dirname, '/src/index.js'),
@@ -25,7 +25,7 @@ module.exports = {
             cacheGroups: {
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
+                    name: "vendor",
                     priority: -20,
                     chunks: "all"
                 }
@@ -97,12 +97,6 @@ module.exports = {
             //chunks: ['app'],
             template: path.resolve(__dirname, 'src/index.html'),
             hash: true
-        }),
-        new webpack.HotModuleReplacementPlugin()
-    ],
-    devServer: {
-        contentBase: './dist',
-        open:true,
-		hot: true
-	}
+        })
+    ]
 }

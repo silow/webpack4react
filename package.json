@@ -1,34 +1,36 @@
 {
-  "name": "webpack4react",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "serve": "webpack-dev-server --config webpack.config.js --mode development --progress --profile --colors",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.11",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.1.0",
-    "style-loader": "^0.20.3",
-    "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13",
-    "webpack-dev-server": "^3.1.1"
-  },
-  "dependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
-  }
+	"name": "webpack4react",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "webpack-dev-server --mode development --progress --profile --colors",
+		"serve": "MODE=development webpack-serve",
+		"dev": "webpack --mode development",
+		"build": "webpack --mode production"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.4",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"clean-webpack-plugin": "^0.1.19",
+		"copy-webpack-plugin": "^4.5.1",
+		"css-loader": "^0.28.11",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"file-loader": "^1.1.11",
+		"html-webpack-plugin": "^3.1.0",
+		"style-loader": "^0.20.3",
+		"webpack": "^4.4.1",
+		"webpack-cli": "^2.0.13",
+		"webpack-dev-server": "^3.1.1",
+		"webpack-serve": "^0.3.1"
+	},
+	"dependencies": {
+		"react": "^16.3.0",
+		"react-dom": "^16.3.0"
+	}
 }
