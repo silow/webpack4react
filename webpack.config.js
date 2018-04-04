@@ -13,7 +13,7 @@ module.exports = {
         vendor: ['react', 'react-dom']
     },
     output: {
-		path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: "assets/js/[name].js",
         chunkFilename: "assets/js/[name].chunk.js"
     },
@@ -70,16 +70,21 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/,
                 exclude: /node_modules/,
                 use: [{
-                        loader: "file",
-                        options: {}
-                    }
+                    loader: "file",
+                    options: {}
+                }
                 ]
             }, {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: [
-                    { loader: 'style' },
-                    { loader: 'css' }
+                test: /\.(scss|sass|css)$/,
+                loaders: [
+                    { loader: 'style-loader', options: { sourceMap: true } },
+                    { loader: 'css-loader', 
+                        options: { 
+                            sourceMap: true ,
+                            url:false} 
+                    },
+                    { loader: 'postcss-loader', options: { sourceMap: true } },
+                    { loader: 'sass-loader', options: { sourceMap: true } }
                 ]
             }
         ]
@@ -88,7 +93,7 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new CopyWebpackPlugin([{
             from: 'src/assets',
-            to:'assets'
+            to: 'assets'
         }]),
         new ExtractTextPlugin("assets/css/site.min.css"),
         new HtmlWebpackPlugin({
@@ -97,6 +102,13 @@ module.exports = {
             //chunks: ['app'],
             template: path.resolve(__dirname, 'src/index.html'),
             hash: true
-        })
-    ]
+        }),
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: './dist',
+        port: 1234,
+        hot: true,
+        open: true
+    }
 }

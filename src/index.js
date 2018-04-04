@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import App from './components/app';
 
-class App extends React.Component {
-    render() {
-      return <div>hello webpack</div>
-    }
-  }
-  ReactDom.render(<App />, document.getElementById('app'))
+
+ReactDom.render(<App />, document.getElementById('app'))

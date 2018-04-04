@@ -1,0 +1,11 @@
+.page-header {
+    display: flex;
+    padding: 30px 10px;
+    border-bottom: 1px solid #ddd;
+
+    h1 {
+        flex: 1;
+        font-size: 28px;
+        opacity: .75;
+    }
+}
