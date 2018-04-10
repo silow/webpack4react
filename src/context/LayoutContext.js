@@ -2,12 +2,12 @@ import React from 'react';
 
 export const themes = {
     light: {
-		foreground: '#ffffff',
-		background: '#222222',
+		  foreground: '#ffffff',
+		  background: '#222222',
     },
     dark: {
-		foreground: '#000000',
+		  foreground: '#000000',
     	background: '#eeeeee',
     },
 };
-export const LayoutContext = React.createContext(themes.dark);
+export const LayoutContext = React.createContext(themes.light);

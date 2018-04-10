@@ -65,7 +65,7 @@ module.exports = {
             {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
-                loader: "babel"
+                loader:'babel'
             }, {
                 test: /\.(png|jpg|gif)$/,
                 exclude: /node_modules/,
@@ -95,7 +95,10 @@ module.exports = {
             from: 'src/assets',
             to: 'assets'
         }]),
-        new ExtractTextPlugin("assets/css/site.min.css"),
+        new ExtractTextPlugin({
+            filename:"assets/css/site.min.css",
+            //disable:NODE_ENV !=='production',
+        }),
         new HtmlWebpackPlugin({
             title: 'React Demo',
             filename: 'index.html',

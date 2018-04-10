@@ -7,7 +7,7 @@ export default function ThemeButton(props) {
             {theme => (
                 <button 
                     {...props}
-                    style={{ backgroundColor: theme.background,color:theme.foreground  }} />
+                    style={{backgroundColor:theme.background,color:theme.foreground }} />
             )}
         </LayoutContext.Consumer>
     );
